@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include('pdfExtractor.urls'))
+    path("files/", include('pdfExtractor.urls')),
+    path("", include('user.urls'))
 ]
 
 if settings.DEBUG:

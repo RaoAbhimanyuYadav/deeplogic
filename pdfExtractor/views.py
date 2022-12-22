@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 import platform
 from tempfile import TemporaryDirectory
@@ -12,11 +13,13 @@ from .forms import UploadFileForm
 from .models import Text
 
 
+@login_required(login_url='login')
 def index(request):
     context = Text.objects.all()
     return render(request, "pdfExtractor/index.html", {'context': context})
 
 
+@login_required(login_url='login')
 def upload_file(request):
     message = ""
     if request.method == "POST":
