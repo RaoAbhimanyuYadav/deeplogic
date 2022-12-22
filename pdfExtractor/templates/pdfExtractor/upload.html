@@ -2,10 +2,20 @@
 
 <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  <p>{{form.file}}</p>
 
-  <p>
-    <input type="submit" value="upload" />
-  </p>
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="inputPassword6" class="col-form-label"
+        >Select file to upload</label
+      >
+    </div>
+    <div class="col-auto">{{form.file}}</div>
+    <div class="col-auto">
+      <span id="passwordHelpInline" class="form-text">
+        <input type="submit" value="upload" />
+      </span>
+    </div>
+  </div>
+  <p>{{message}}</p>
 </form>
 {% endblock content %}
