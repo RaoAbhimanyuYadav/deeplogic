@@ -53,7 +53,6 @@ def upload_file(request):
             message = f'{inst.filename} uploaded succesfully'
         elif file.content_type == 'image/jpeg' or 'image/png':
             text = str(((pytesseract.image_to_string(Image.open(file)))))
-            text = text.replace(r"-\n", "<br/>")
             inst = Text.objects.create(filename=str(file), file=file, des=text)
             inst.save()
             message = f"{inst.filename} uploaded successfully"
