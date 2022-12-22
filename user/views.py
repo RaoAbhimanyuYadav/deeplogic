@@ -5,6 +5,10 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm
 
 
+def homepage(request):
+    return render(request, 'user/homepage.html')
+
+
 def loginUser(request):
     if request.method == 'POST':
         username = request.POST['username']
