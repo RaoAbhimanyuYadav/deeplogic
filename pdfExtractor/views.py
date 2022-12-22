@@ -20,6 +20,12 @@ def index(request):
 
 
 @login_required(login_url='login')
+def desciption(request, id):
+    context = Text.objects.get(id=id)
+    return render(request, 'pdfExtractor/description.html', {'context': context})
+
+
+@login_required(login_url='login')
 def upload_file(request):
     message = ""
     if request.method == "POST":

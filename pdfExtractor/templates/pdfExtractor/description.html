@@ -1,0 +1,15 @@
+{% extends 'main.html' %} {% block content %}
+    <p>{{context.filename}}</p>
+    <p><pre>{{context.des}}</pre></p>
+    <button>
+        <a href="{{context.file.url}}"> {{context.filename}} </a>
+    </button>
+    <button>
+        <a
+          href="{{context.file.url}}"
+          download
+        >
+          Download
+        </a>
+    </button>
+{% endblock content %}
