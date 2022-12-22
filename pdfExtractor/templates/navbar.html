@@ -1,0 +1,30 @@
+{% load static %}
+<!-- Header Section -->
+
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a
+    class="flex-sm-fill text-sm-center nav-link active"
+    href="{% url 'upload' %}"
+    >Upload PDF</a
+  >
+  <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'index' %}"
+    >Home</a
+  >
+</nav>
+
+{% comment %}
+<ul class="header__menu">
+  {% if request.user.is_authenticated %}
+  <li class="header__menuItem">
+    <a href="{% url 'create-project' %}">Add Project</a>
+  </li>
+  <li class="header__menuItem">
+    <a href="{% url 'logout' %}" class="btn btn--sub">Logout</a>
+  </li>
+  {% else %}
+  <li class="header__menuItem">
+    <a href="{% url 'login' %}" class="btn btn--sub">Login/Sign Up</a>
+  </li>
+  {% endif %}
+</ul>
+{% endcomment %}

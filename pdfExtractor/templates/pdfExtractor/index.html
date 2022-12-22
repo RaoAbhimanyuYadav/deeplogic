@@ -1,0 +1,5 @@
+{% extends 'main.html' %} {% block content %} {% for i in context %}
+{{i.filename}} <br />
+{{i.des}} <br />
+<a href="{{i.file.url}}" download> {{i.filename}} </a>
+{% endfor %} {% endblock content %}
