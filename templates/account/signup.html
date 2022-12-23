@@ -26,7 +26,7 @@ height: 80vh;
         <div style="text-align: center">
             <h3>Account Sign Up</h3>
         </div>
-        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        <form id="signup_form" method="POST" action="{% url 'account_signup' %}">
             {% csrf_token %}
             {{ form|crispy }}
             {% if redirect_field_value %}
@@ -41,13 +41,14 @@ height: 80vh;
                 padding: 5px;
                 border-radius: 10px;
                 font-size: 20px;
-                " type="submit">{% trans "Sign Up" %}</button>
+                " 
+                type="submit">{% trans "Sign Up" %}</button>
             </div>
         </form>
         <div style="display: flex; margin-top: 25px; gap: 10px">
             <p>Already have an account? Then please </p>
             <a href="{{ login_url }}">Sign In</a>
-        a</div>
+        </div>
     </div>
 </div>
 

@@ -13,7 +13,7 @@
 
 ## Introduction
 
-This app helps user to convert their PDF file or Images(JPGE/PNG) into text using OCR. This app is made using Django.
+This app helps user to convert their PDF file or Images(JPGE/PNG) into text using OCR. This app is made using Django. You can login by registering to this app or you can login directly via Google SSO.
 
 ## Requirement
 
@@ -52,7 +52,7 @@ When you runserver using
 
 - python manage.py runserver
 
-Then if you are a new user then you must sign-up for using this app.
+Then if you are a new user then you must sign-up for using this app or you can use google SSO.
 
 If you are already a user then you can simply login.
 
@@ -71,16 +71,20 @@ After this I have a basic functional app. Then I added authorization.
 A basic working app is ready. So, I started modifing app in such a way that it can fullfill the instruction
 and added styling to the app.
 
+Finally I implemented User Authentication / Single Sign On(SSO).
+
 ## Challenges faced
 
 - Installation and intial set up for postgresql and pgadmin4
 - Finding out better library for converting images to text using OCR
+- Worked with new library for SSO.
 
 ## Learned from assignment
 
 - Django with POSTGRES
 - pdf/jpeg/png to text using OCR
+- Implementation of SSO in Django
 
 ## Link to app working video
 
-- [G-drive]()
+- [G-drive](https://drive.google.com/drive/folders/1HmFsxC3uximWRLvMbjeA4_Ak9qQ3itrH?usp=share_link)
