@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     "pdfExtractor.apps.PdfextractorConfig",
-    "user.apps.UserConfig",
+
 ]
 
 MIDDLEWARE = [
