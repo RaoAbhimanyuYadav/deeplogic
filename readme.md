@@ -88,3 +88,4 @@ Finally I implemented User Authentication / Single Sign On(SSO).
 ## Link to app working video
 
 - [G-drive](https://drive.google.com/drive/folders/1HmFsxC3uximWRLvMbjeA4_Ak9qQ3itrH?usp=share_link)
+- I have added comments for the logic of the application.  
