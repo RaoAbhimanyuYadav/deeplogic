@@ -9,7 +9,7 @@
 - Approach
 - Challenges faced
 - Learned from assignment
-- Link to app working
+- Link to app working video
 
 ## Introduction
 
@@ -61,20 +61,22 @@ Now you see the text extracted from files by clicking on file or you can navigat
 ## Approach
 
 Firstly I have to connect my django app with Postgresql.
-then i started out finding for a library that can convert pdf to text then i understand they work with typed character now i have started finding library that uses OCR for conversion.
-Now i have my basic functional app now I added authorization
-Now a basic working app is ready
-Now i started modifing app in such a way that it can fullfill the instruction
-Finally working is fine. Now i started working on styling
+
+Then I started out finding for a library that can convert pdf to text then I understand they work with typed character. Now, I have started finding library that uses OCR for conversion.
+
+After this I have a basic functional app. Then I added authorization.
+
+A basic working app is ready. So, I started modifing app in such a way that it can fullfill the instruction
+and added styling to the app.
 
 ## Challenges faced
 
-installation and intial set up for postgresql and pgadmin4
-finding out better library for converting images to text using OCR
+- Installation and intial set up for postgresql and pgadmin4
+- Finding out better library for converting images to text using OCR
 
 ## Learned from assignment
 
-POSTGRES
-pdf/jpeg/png to text using OCR
+- Django with POSTGRES
+- pdf/jpeg/png to text using OCR
 
-## Link to app working
+## Link to app working video
