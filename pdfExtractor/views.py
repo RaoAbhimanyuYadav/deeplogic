@@ -43,8 +43,7 @@ def upload_file(request):
                 path_to_poppler_exe = Path(r"C:\.....")
                 pytesseract.pytesseract.tesseract_cmd = (
                     r"C:\ProgramFiles\Tesseract-OCR\tesseract.exe")
-
-            PDF_file = Path(f"media/pdf/{inst.filename}")
+            PDF_file = Path(f"media/{inst.file.name}")
             image_file_list = []
 
             with TemporaryDirectory() as tempdir:
