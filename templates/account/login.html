@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+
+{% load crispy_forms_filters %}
+{% load i18n %}
+
+{% load account socialaccount %}
+
+{% load socialaccount %}
+
+{% block content %}
+
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  "
+>
+  <div
+    style="
+      border: 2px solid black;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: aliceblue;
+    "
+  >
+    <div style="text-align: center">
+        <h3>Account Login</h3>
+        <p>Hello, Welcome Back!</p>
+    </div>
+
+    <div class="text-center">   
+        <h6 style="text-align:center">Sign in with </h6>
+        {% get_providers as socialaccount_providers %} 
+        <div class="socialaccount_ballot">
+
+            {% for provider in socialaccount_providers %}
+                {% if provider.id == "openid" %}
+                    {% for brand in provider.get_brands %}
+                    <div>
+                    <a title="{{brand.name}}" 
+                        class="socialaccount_provider {{provider.id}} {{brand.id}}" 
+                        href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
+                        >{{brand.name}}</a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="my-2">
+                <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+                    href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+                    {{ provider.name }}
+                </a>
+                </div>
+            {% endfor %}
+
+
+        <div class="login-or border-top border-bottom my-3">{% trans 'OR' %}</div>
+        </div>
+    </div>
+
+
+    <form action="{% url 'account_login' %}" method="POST">
+      {% csrf_token %}
+        
+      <div
+        style="
+          display: flex;
+          flex-direction:column;
+          justify-content: space-between;
+          width: 100%;
+          margin: 5px;
+        "
+      >
+      {{ form|crispy }}
+      </div>
+      {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+
+     
+      <div style="display: flex; width: 100%; justify-content: center">
+        <button
+          type="submit"
+          value="Log In"
+          style="
+            width: 50%;
+            margin-top: 10px;
+            color: floralwhite;
+            background-color: navy;
+            padding: 5px;
+            border-radius: 10px;
+            font-size: 20px;
+          "
+        >{% trans "Sign In" %}</button>
+      </div>
+    </form>
+    <div style="display: flex; margin-top: 25px; gap: 10px">
+      <p>Don’t have an Account?</p>
+      <a href="{{signup_url}}">Sign Up</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+

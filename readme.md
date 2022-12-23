@@ -39,6 +39,8 @@ Following should be installed in your system
    - pip install pillow
    - pip install pytesseract
    - pip install pdf2image
+   - pip install django-allauth
+   - pip install django-crispy-forms
 
 4. Install this software in your system
 
@@ -80,3 +82,5 @@ and added styling to the app.
 - pdf/jpeg/png to text using OCR
 
 ## Link to app working video
+
+- [G-drive]()
