@@ -1,3 +1,7 @@
 {% extends 'main.html' %} {% block content %}
-<h1>Please Login to use website</h1>
+<h1
+  style="text-align: center; color: {{isLogin|yesno:'green,red,black'}}; margin-top:100px"
+>
+  {{message}}
+</h1>
 {% endblock content %}
