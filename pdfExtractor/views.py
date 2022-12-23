@@ -43,7 +43,8 @@ def upload_file(request):
                 path_to_poppler_exe = Path(r"C:\.....")
                 pytesseract.pytesseract.tesseract_cmd = (
                     r"C:\ProgramFiles\Tesseract-OCR\tesseract.exe")
-            # now location of uploaded file is given as PDF_file & image list all pages of PDF as image
+            # now location of uploaded file is given as PDF_file
+            # & image list all pages of PDF as image
             PDF_file = Path(f"media/{inst.file.name}")
             image_file_list = []
             # a temporary loaction is make to convert pdf pages to images
@@ -66,7 +67,7 @@ def upload_file(request):
                 inst.save()
             message = f'{inst.filename} uploaded succesfully'
         elif file.content_type == 'image/jpeg' or 'image/png':
-            # for a single image directly text can be extracted and stored 
+            # for a single image directly text can be extracted and stored
             text = str(((pytesseract.image_to_string(Image.open(file)))))
             inst = Text.objects.create(filename=str(file), file=file, des=text, owner=user)
             inst.save()
@@ -77,3 +78,13 @@ def upload_file(request):
         form = UploadFileForm()
     context = {"form": form, "message": message}
     return render(request, "pdfExtractor/upload.html", context)
+
+
+def homepage(request):
+    message = 'Please Login to visit website'
+    isLogin = False
+    if request.user.is_authenticated:
+        message = 'Now you can upload and view uploaded files'
+        isLogin = True
+    context = {'message': message, 'isLogin': isLogin}
+    return render(request, 'homepage.html', context)

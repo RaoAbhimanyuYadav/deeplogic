@@ -15,7 +15,7 @@ SECRET_KEY = "django-insecure-gxwqn4cfq3y$3$vsbw5wvfk6(f0t(1x)5b&m22mf!0ja@2ik3z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -28,8 +28,19 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.github',
+
+    'crispy_forms',
+
     "pdfExtractor.apps.PdfextractorConfig",
-    "user.apps.UserConfig",
+
 ]
 
 MIDDLEWARE = [
@@ -132,3 +143,36 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_ROOT = BASE_DIR / "media"
 
 MEDIA_URL = "/media/"
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+# 501926831340-do64idbejloc22feop2dlcnkr8afhvlg.apps.googleusercontent.com
+# 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
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
+LOGIN_REDIRECT_URL = 'index'
+
+LOGOUT_REDIRECT_URL = 'account_login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+ACCOUNT_EMAIL_VERIFICATION = "none"

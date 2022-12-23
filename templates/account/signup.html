@@ -1,0 +1,55 @@
+{% extends 'main.html' %} 
+
+{% load i18n %}
+
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+
+<div 
+style="
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 80vh;
+"
+>
+    <div 
+    style="
+        border: 2px solid black;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: aliceblue;
+    ">
+        <div style="text-align: center">
+            <h3>Account Sign Up</h3>
+        </div>
+        <form id="signup_form" method="POST" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div style="display: flex; width: 100%; justify-content: center">
+                <button style="
+                width: 50%;
+                margin-top: 10px;
+                color: floralwhite;
+                background-color: navy;
+                padding: 5px;
+                border-radius: 10px;
+                font-size: 20px;
+                " 
+                type="submit">{% trans "Sign Up" %}</button>
+            </div>
+        </form>
+        <div style="display: flex; margin-top: 25px; gap: 10px">
+            <p>Already have an account? Then please </p>
+            <a href="{{ login_url }}">Sign In</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
