@@ -6,7 +6,13 @@ from .forms import CustomUserCreationForm
 
 
 def homepage(request):
-    return render(request, 'user/homepage.html')
+    message = 'Please Login to visit website'
+    isLogin = False
+    if request.user.is_authenticated:
+        message = 'Now you can upload and view uploaded files'
+        isLogin = True
+    context = {'message': message, 'isLogin': isLogin}
+    return render(request, 'user/homepage.html', context)
 
 
 def loginUser(request):

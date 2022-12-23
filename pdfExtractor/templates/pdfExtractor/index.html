@@ -4,22 +4,21 @@
   <thead>
     <tr>
       <th scope="col">Filename</th>
-      <th scope="col">Description</th>
-      <th scope="col">View</th>
+      <th scope="col">View Document</th>
+      <th scope="col">Download</th>
     </tr>
   </thead>
   <tbody>
     {% for i in context %}
     <tr>
-      <th scope="row">{{i.filename}}</th>
-      <td><pre>{{i.des}}</pre></td>
+      <th scope="row">
+        <a href="{% url 'description' i.id %}"> {{i.filename}} </a>
+      </th>
       <td>
-        <a href="{{i.file.url}}"> {{i.filename}} </a><br /><a
-          href="{{i.file.url}}"
-          download
-        >
-          Download
-        </a>
+        <a href="{{i.file.url}}"> {{i.file.name}} </a>
+      </td>
+      <td>
+        <a href="{{i.file.url}}" download> Download </a>
       </td>
     </tr>
     {% endfor %}

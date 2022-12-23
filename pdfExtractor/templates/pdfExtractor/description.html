@@ -1,0 +1,26 @@
+{% extends 'main.html' %} {% block content %}
+  <div style="padding:20px">
+    <h3 style="text-align:center">{{context.filename}}</h3>
+    <p>
+      <pre>
+        {{context.des}}
+      </pre>
+    </p>
+    <div style="display:flex; justify-content:center; width:100%; gap:10px">
+      <button style="background-color:grey;border-radius:5px;padding:5px">
+          <a href="{{context.file.url}}" style="text-decoration:none; color:white"> 
+            {{context.filename}} 
+          </a>
+      </button>
+      <button style="background-color:grey;border-radius:5px;padding:5px">
+          <a
+            href="{{context.file.url}}"
+            download
+            style="text-decoration:none; color:white"
+          >
+            Download
+          </a>
+      </button>
+    </div>
+  </div>
+{% endblock content %}
