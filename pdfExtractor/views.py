@@ -15,25 +15,28 @@ from .models import Text
 
 @login_required(login_url='login')
 def index(request):
-    context = Text.objects.all()
+    user = request.user
+    context = user.text_set.all()
     return render(request, "pdfExtractor/index.html", {'context': context})
 
 
 @login_required(login_url='login')
 def desciption(request, id):
-    context = Text.objects.get(id=id)
+    user = request.user
+    context = user.text_set.get(id=id)
     return render(request, 'pdfExtractor/description.html', {'context': context})
 
 
 @login_required(login_url='login')
 def upload_file(request):
+    user = request.user
     message = ""
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
         file = request.FILES["file"]
 
         if file.content_type == 'application/pdf':
-            inst = Text.objects.create(filename=str(file), file=file)
+            inst = Text.objects.create(filename=str(file), file=file, owner=user)
             inst.save()
 
             if platform.system() == "Windows":
@@ -62,7 +65,7 @@ def upload_file(request):
             message = f'{inst.filename} uploaded succesfully'
         elif file.content_type == 'image/jpeg' or 'image/png':
             text = str(((pytesseract.image_to_string(Image.open(file)))))
-            inst = Text.objects.create(filename=str(file), file=file, des=text)
+            inst = Text.objects.create(filename=str(file), file=file, des=text, owner=user)
             inst.save()
             message = f"{inst.filename} uploaded successfully"
         else:
